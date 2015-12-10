@@ -1,0 +1,39 @@
+﻿@model MovieSearch.Models.MoviePostersViewModel
+
+@{
+    ViewBag.Title = @Model.Movie.OriginalTitle;
+}
+
+<div class="well">
+    <h2>@Model.Movie.RussianTitle</h2>
+    <h5>@Model.Movie.OriginalTitle</h5>
+    <div class="row">
+        <div class="col-md-5">
+            <div>
+                <img style="height: 450px;" src="@Model.Poster" />
+            </div> 
+        </div>
+        <div class="col-md-7">
+            <div>
+                <h4>Описание:</h4>
+                @Model.Movie.Description
+            </div>
+            <div>
+                <h4>Дата выхода:</h4>
+                @Model.Movie.ReleaseDate
+            </div>
+            <div>
+                <h4>Возрастное ограничение:</h4>
+                @Model.Movie.AgeLimit
+            </div>
+            <div>
+                <h4>MPAA:</h4>
+                @Model.Movie.MPAA
+            </div>
+            <div>
+                <h4>Продолжительность:</h4>
+                @Model.Movie.Runtime мин.
+            </div>
+        </div>
+    </div>
+</div>

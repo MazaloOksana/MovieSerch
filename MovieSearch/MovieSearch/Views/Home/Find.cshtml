@@ -1,0 +1,27 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<MovieSearch.Repository.Domain.Movie>
+
+@foreach (var item in Model)
+{
+    <div class="well">
+        <a href="@Url.Action("MovieView", "Home", new { movieId = item.Id })">
+            <h3>
+                <strong>
+                    @item.RussianTitle
+                </strong>
+            </h3>
+        </a>
+        <span class="lead">
+            @item.Description
+        </span>
+    </div>
+}
+<br />
+<div>
+    <span class="lead">
+        Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+    </span>
+</div>
+<div class="btn-group">
+    @Html.PagedListPager(Model, page => Url.Action("Find", new { page }))
+</div>

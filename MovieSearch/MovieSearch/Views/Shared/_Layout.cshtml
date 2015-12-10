@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet">
+    <link href="~/Content/css/style.css" rel="stylesheet"/>
+    <title>WorldKino</title>
+</head>
+<body>
+<div class="navbar" role="navigation">
+    <div class="row">
+        <div class="col-md-offset-8">
+            <a href="@Url.Action("Index", "Home", new {category = ""})">
+                <h1 style="text-align: center; color: white;">WorldKino</h1></a>
+        </div>
+    </div>
+</div>
+<div style="text-align: right;">
+    @using (Html.BeginForm("Find", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "navbar-form" }))
+    {
+        <div class="form-group">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Поиск" required="" />
+        </div>
+        <input class="btn btn-default" type="submit" value="Поиск" />
+    }
+        </div>
+    <div class="row">
+        <div>
+        </div>
+        <div id="categories" class="col-xs-3">
+            <h3 style="color: white; margin-left: 10px;">Жанры:</h3>
+            @Html.Action("Menu","Nav")
+        </div>
+        <div class="col-xs-8">
+            <h3 style="color: white; margin-left: 10px;">Фильмы:</h3>
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>
